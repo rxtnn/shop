@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Каталог — Магазин мебели</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="brand">Nepridumal</div>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+    </nav>
+    <div class="top-actions">
+      <a href="cart.html" class="cart-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+        <span class="cart-count">0</span>
+      </a>
+      <a href="#" id="authButton" class="auth-button">Войти</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section">
+    <h2>Каталог</h2>
+    
+    <div id="categoryInfo" style="margin-bottom: 18px; display: none;">
+      <div style="background: #f8f5f2; padding: 12px 16px; border-radius: 8px; border-left: 4px solid #8b5e3c;">
+        <p style="margin: 0; font-size: 14px; color: #2f2a25;">
+          <strong>Фильтр применен:</strong> 
+          <span id="currentCategoryName"></span>
+          <button id="clearCategoryFilter" style="margin-left: 10px; background: transparent; border: 1px solid #8b5e3c; color: #8b5e3c; padding: 4px 8px; border-radius: 4px; font-size: 12px; cursor: pointer;">
+            Сбросить фильтр
+          </button>
+        </p>
+      </div>
+    </div>
+    
+    <div class="search-bar" style="margin-bottom:18px;">
+      <input id="searchInput" placeholder="Поиск по каталогу...">
+      <button class="cta" id="searchBtn">Поиск</button>
+    </div>
+    
+    <div class="catalog-layout">
+      <aside class="filters-sidebar">
+        <div class="filter-group">
+          <h4>Категории</h4>
+          <div id="categoriesFilter">
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4>Цена</h4>
+          <div class="price-range">
+            <input type="range" id="priceSlider" min="0" max="50000" value="50000" class="price-slider">
+            <div class="price-values">
+              <span id="minPrice">0 ₽</span>
+              <span id="maxPrice">50 000 ₽</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4>Материал</h4>
+          <label class="filter-option">
+            <input type="checkbox" name="material" value="Дерево">
+            Дерево
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="material" value="Металл">
+            Металл
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="material" value="Ткань">
+            Ткань
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="material" value="Кожа">
+            Кожа
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="material" value="Пластик">
+            Пластик
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="material" value="Стекло">
+            Стекло
+          </label>
+        </div>
+
+        <button class="apply-filters cta" id="applyFilters">Применить фильтры</button>
+        <button class="reset-filters" id="resetFilters">Сбросить все</button>
+      </aside>
+
+      <div class="products-container">
+        <div id="productsGrid" class="grid cols-3">
+        </div>
+        <div id="loadingMessage" style="text-align: center; padding: 40px;">
+          Загрузка товаров...
+        </div>
+        <div id="noProductsMessage" style="text-align: center; padding: 40px; display: none;">
+          <h3>Товары не найдены</h3>
+          <p>Попробуйте изменить параметры фильтрации или сбросить фильтры</p>
+          <button class="cta" onclick="catalog.resetFilters()" style="margin-top: 15px;">Сбросить фильтры</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="loginModal" class="modal">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal">&times;</button>
+    
+    <div class="login-form-container">
+      <div class="login-header">
+        <h3>Вход в аккаунт</h3>
+        <p>Начните покупать с умом!</p>
+      </div>
+      
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" required placeholder="Введите ваш email">
+        </div>
+        
+        <div class="form-group">
+          <label>Пароль</label>
+          <input type="password" id="loginPassword" required placeholder="Введите ваш пароль">
+        </div>
+        
+        <div class="form-options">
+          <label class="checkbox-label">
+            <input type="checkbox" id="rememberMe">
+            Запомнить меня
+          </label>
+          <a href="#" class="forgot-password">Забыли пароль?</a>
+        </div>
+        
+        <button type="submit" class="submit-btn">Войти</button>
+      </form>
+      
+      <div class="register-link">
+        <p>Еще нет аккаунта? <a href="#" class="register-link-btn">Зарегистрироваться</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    © 2025 — Магазин мебели. Все права защищены. 
+  </div>
+</footer>
+
+<script src="js/auth.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/cart-counter.js"></script>
+<script src="js/no-auth-animation.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const totalCount = localStorage.getItem('cartTotalCount') || '0'
+  document.querySelectorAll('.cart-count').forEach(counter => {
+    counter.textContent = totalCount
+  })
+  
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'cartTotalCount') {
+      document.querySelectorAll('.cart-count').forEach(counter => {
+        counter.textContent = e.newValue || '0'
+      })
+    }
+  })
+
+  document.getElementById('clearCategoryFilter')?.addEventListener('click', function() {
+    if (window.catalog) {
+      catalog.resetFilters()
+    }
+  })
+})
+</script>
+<script>
+(function() {
+  const authButton = document.getElementById('authButton');
+  if (authButton) {
+    authButton.style.minWidth = '140px';
+    authButton.style.minHeight = '40px';
+    authButton.style.display = 'inline-flex';
+    authButton.style.alignItems = 'center';
+    authButton.style.justifyContent = 'center';
+    
+    fetch('/api/user', { credentials: 'include' })
+      .then(response => response.ok ? response.json() : Promise.reject())
+      .then(data => {
+        authButton.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span style="margin-left: 5px;">${data.user.firstName || 'Кабинет'}</span>
+        `;
+        authButton.href = "account.html";
+        authButton.classList.add('account-icon');
+      })
+      .catch(() => {
+        authButton.innerHTML = "Войти";
+        authButton.href = "#";
+      });
+  }
+})();
+</script>
+
+</body>
+</html>

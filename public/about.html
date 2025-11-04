@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>О нас — Магазин мебели</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .about-hero {
+      background: linear-gradient(135deg, #8b5e3c 0%, #6d4a30 100%);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .about-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .about-hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .about-tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #e8e2dc;
+    }
+    
+    .about-tab {
+      padding: 12px 24px;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #6b5f57;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .about-tab.active {
+      color: #8b5e3c;
+      border-bottom-color: #8b5e3c;
+    }
+    
+    .about-content {
+      display: none;
+    }
+    
+    .about-content.active {
+      display: block;
+    }
+    
+    .about-section {
+      margin-bottom: 40px;
+    }
+    
+    .about-section h2 {
+      color: #1f1a16;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    
+    .about-section p {
+      line-height: 1.6;
+      color: #2f2a25;
+      margin-bottom: 15px;
+    }
+    
+    .brand-info {
+      background: #f8f5f2;
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    
+    .brand-info h3 {
+      color: #8b5e3c;
+      margin-bottom: 15px;
+    }
+    
+    .format-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .format-card {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border: 1px solid #e8e2dc;
+    }
+    
+    .format-card h4 {
+      color: #8b5e3c;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border: 1px solid #e8e2dc;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #8b5e3c;
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      color: #6b5f57;
+      font-size: 0.9rem;
+    }
+    
+    .career-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #8b5e3c;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+    
+    .career-link:hover {
+      background: #6d4a30;
+    }
+    
+    @media (max-width: 768px) {
+      .about-tabs {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .about-tab {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .format-cards, .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="brand">Nepridumal</div>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+    </nav>
+    <div class="top-actions">
+      <a href="cart.html" class="cart-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+        <span class="cart-count">0</span>
+      </a>
+      <a href="#" id="authButton" class="auth-button">Войти</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="about-hero">
+    <h1>О компании Nepridumal</h1>
+    <p>Мы предлагаем качественную мебель в современном скандинавском стиле. Наша миссия — сделать ваш дом уютным и функциональным.</p>
+  </section>
+
+  <div class="about-tabs">
+    <button class="about-tab active" data-tab="about">О нас</button>
+    <button class="about-tab" data-tab="social">Социальные инициативы</button>
+    <button class="about-tab" data-tab="charity">Благотворительность</button>
+  </div>
+
+  <div id="about-tab" class="about-content active">
+    <div class="about-section">
+      <div class="brand-info">
+        <h3>Nepridumal — Расшифровывается как "Непридуманный", что отражает наш подход к созданию мебели</h3>
+        <p>Мы создаем мебель, которая органично вписывается в вашу жизнь, без лишних деталей и вычурности. Наш подход — это гармония функциональности и эстетики.</p>
+      </div>
+
+      <h2>Наша философия</h2>
+      <p>Сеть магазинов Nepridumal — это одна из динамично развивающихся мебельных сетей России. Мы единственная российская сеть мебели и аксессуаров для дома, работающая в формате гипермаркета.</p>
+      <p>Наши магазины имеют уникальный для российского рынка формат — "Все в одном месте". Мы предлагаем комплексные интерьерные решения на основе широкого мультибрендового ассортимента.</p>
+      
+      <h2>Наши форматы магазинов</h2>
+      <div class="format-cards">
+        <div class="format-card">
+          <h4>Nepridumal Mini</h4>
+          <p><strong>Общая площадь:</strong> 1000–1500 м²</p>
+          <p>В Nepridumal mini вы можете приобрести самые популярные модели мебели, представленные в торговом зале. Если вы хотите ознакомиться с более широким ассортиментом, то в магазинах Nepridumal mini есть зона онлайн-заказа с открытым доступом для посетителей на сайт nepridumal.ru.</p>
+        </div>
+        
+        <div class="format-card">
+          <h4>Nepridumal Home</h4>
+          <p><strong>Общая площадь:</strong> 1500–2000 м²</p>
+          <p>В Nepridumal Home представлен широкий ассортимент товаров для дома, которые позволят вам создать уютный и современный интерьер. Посуда, текстиль, шторы, освещение, ковры, декор и многое другое вы можете найти в торговом зале.</p>
+        </div>
+      </div>
+      
+      <h2>Nepridumal в цифрах</h2>
+      <p>Компания Nepridumal — мультиформатный ритейлер мебели и товаров для дома, который работает в уникальном для российского рынка формате «Все в одном месте». В гипермаркетах сети и интернет-магазине можно найти все необходимое для обустройства дома.</p>
+      <p>Nepridumal предлагает покупателям не только качественные товары, но и квалифицированную помощь на всех этапах обустройства дома — от создания дизайн-проекта и производства мебели по индивидуальным заказам до финальной сборки.</p>
+      
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">60+</div>
+          <div class="stat-label">магазинов по всей России</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">95 000+</div>
+          <div class="stat-label">товаров для дома в ассортименте</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">лет на рынке</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1 000 000+</div>
+          <div class="stat-label">довольных клиентов</div>
+        </div>
+      </div>
+      
+      <a href="#" class="career-link">Смотрите также информацию о работе и карьере в Nepridumal</a>
+    </div>
+  </div>
+
+  <div id="social-tab" class="about-content">
+    <div class="about-section">
+      <h2>Социальные инициативы</h2>
+      <p>Мы активно участвуем в жизни общества и реализуем различные социальные проекты, направленные на улучшение качества жизни наших клиентов и сотрудников.</p>
+      
+      <h3>Поддержка местных производителей</h3>
+      <p>Мы сотрудничаем с российскими производителями мебели и материалов, поддерживая местную экономику и способствуя развитию отечественного производства.</p>
+      
+      <h3>Экологическая ответственность</h3>
+      <p>Мы заботимся об окружающей среде и используем экологически чистые материалы в производстве нашей мебели. Также мы реализуем программы по переработке и утилизации мебели.</p>
+      
+      <h3>Образовательные программы</h3>
+      <p>Мы проводим мастер-классы и семинары по дизайну интерьеров, помогая нашим клиентам создавать комфортное и функциональное пространство.</p>
+    </div>
+  </div>
+
+  <div id="charity-tab" class="about-content">
+    <div class="about-section">
+      <h2>Благотворительность</h2>
+      <p>Мы верим в важность помощи тем, кто в ней нуждается, и регулярно участвуем в благотворительных проектах.</p>
+      
+      <h3>Поддержка детских домов</h3>
+      <p>Мы помогаем обустраивать комнаты в детских домах, создавая уютную и комфортную атмосферу для детей, оставшихся без попечения родителей.</p>
+      
+      <h3>Помощь социальным учреждениям</h3>
+      <p>Мы сотрудничаем с домами престарелых и центрами социальной помощи, предоставляя мебель и предметы интерьера для создания комфортных условий проживания.</p>
+      
+      <h3>Участие в социальных проектах</h3>
+      <p>Мы поддерживаем различные социальные инициативы, направленные на помощь людям с ограниченными возможностями и малообеспеченным семьям.</p>
+    </div>
+  </div>
+</main>
+
+<div id="loginModal" class="modal">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal">&times;</button>
+    
+    <div class="login-form-container">
+      <div class="login-header">
+        <h3>Вход в аккаунт</h3>
+        <p>Начните покупать с умом!</p>
+      </div>
+      
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" required placeholder="Введите ваш email">
+        </div>
+        
+        <div class="form-group">
+          <label>Пароль</label>
+          <input type="password" id="loginPassword" required placeholder="Введите ваш пароль">
+        </div>
+        
+        <div class="form-options">
+          <label class="checkbox-label">
+            <input type="checkbox" id="rememberMe">
+            Запомнить меня
+          </label>
+          <a href="#" class="forgot-password">Забыли пароль?</a>
+        </div>
+        
+        <button type="submit" class="submit-btn">Войти</button>
+      </form>
+      
+      <div class="register-link">
+        <p>Еще нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    © 2025 — Магазин мебели. Все права защищены. 
+  </div>
+</footer>
+
+<script src="js/auth.js"></script>
+<script src="js/cart-counter.js"></script>
+<script src="js/no-auth-animation.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const totalCount = localStorage.getItem('cartTotalCount') || '0'
+  document.querySelectorAll('.cart-count').forEach(counter => {
+    counter.textContent = totalCount
+  })
+  
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'cartTotalCount') {
+      document.querySelectorAll('.cart-count').forEach(counter => {
+        counter.textContent = e.newValue || '0'
+      })
+    }
+  })
+  
+  const tabs = document.querySelectorAll('.about-tab');
+  const contents = document.querySelectorAll('.about-content');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      
+      tab.classList.add('active');
+      
+      const tabId = tab.getAttribute('data-tab');
+      document.getElementById(`${tabId}-tab`).classList.add('active');
+    });
+  });
+})
+</script>
+<script>
+(function() {
+  const authButton = document.getElementById('authButton');
+  if (authButton) {
+    authButton.style.minWidth = '140px';
+    authButton.style.minHeight = '40px';
+    authButton.style.display = 'inline-flex';
+    authButton.style.alignItems = 'center';
+    authButton.style.justifyContent = 'center';
+    
+    fetch('/api/user', { credentials: 'include' })
+      .then(response => response.ok ? response.json() : Promise.reject())
+      .then(data => {
+        authButton.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span style="margin-left: 5px;">${data.user.firstName || 'Кабинет'}</span>
+        `;
+        authButton.href = "account.html";
+        authButton.classList.add('account-icon');
+      })
+      .catch(() => {
+        authButton.innerHTML = "Войти";
+        authButton.href = "#";
+      });
+  }
+})();
+</script>
+
+</body>
+</html>

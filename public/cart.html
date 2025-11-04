@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Корзина — Магазин мебели</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="brand">Nepridumal</div>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+    </nav>
+    <div class="top-actions">
+      <a href="cart.html" class="cart-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+        <span class="cart-count">0</span>
+      </a>
+      <a href="#" id="authButton" class="auth-button">Войти</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section">
+    <h2>Корзина</h2>
+    
+    <div class="cart-container">
+      <div class="cart-items">
+        <div class="empty-cart">
+          <h3>Корзина пуста</h3>
+          <p>Добавьте товары из каталога</p>
+          <a href="catalog.html" class="cta">Перейти в каталог</a>
+        </div>
+      </div>
+
+      <div class="cart-summary">
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="loginModal" class="modal">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal">&times;</button>
+    
+    <div class="login-form-container">
+      <div class="login-header">
+        <h3>Вход в аккаунт</h3>
+        <p>Начните покупать с умом!</p>
+      </div>
+      
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" required placeholder="Введите ваш email">
+        </div>
+        
+        <div class="form-group">
+          <label>Пароль</label>
+          <input type="password" id="loginPassword" required placeholder="Введите ваш пароль">
+        </div>
+        
+        <div class="form-options">
+          <label class="checkbox-label">
+            <input type="checkbox" id="rememberMe">
+            Запомнить меня
+          </label>
+          <a href="#" class="forgot-password">Забыли пароль?</a>
+        </div>
+        
+        <button type="submit" class="submit-btn">Войти</button>
+      </form>
+      
+      <div class="register-link">
+        <p>Еще нет аккаунта? <a href="#" class="register-link-btn">Зарегистрироваться</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    © 2025 — Магазин мебели. Все права защищены. 
+  </div>
+</footer>
+
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/no-auth-animation.js"></script>
+<script>
+(function() {
+  const authButton = document.getElementById('authButton');
+  if (authButton) {
+    authButton.style.minWidth = '140px';
+    authButton.style.minHeight = '40px';
+    authButton.style.display = 'inline-flex';
+    authButton.style.alignItems = 'center';
+    authButton.style.justifyContent = 'center';
+    
+    fetch('/api/user', { credentials: 'include' })
+      .then(response => response.ok ? response.json() : Promise.reject())
+      .then(data => {
+        authButton.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span style="margin-left: 5px;">${data.user.firstName || 'Кабинет'}</span>
+        `;
+        authButton.href = "account.html";
+        authButton.classList.add('account-icon');
+      })
+      .catch(() => {
+        authButton.innerHTML = "Войти";
+        authButton.href = "#";
+      });
+  }
+})();
+</script>
+
+</body>
+</html>

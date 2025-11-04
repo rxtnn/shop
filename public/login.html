@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Вход — Магазин мебели</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="brand">Nepridumal</div>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="login.html">Вход</a>
+    </nav>
+    <div class="top-actions">
+      <a href="cart.html">Корзина</a>
+      <a href="account.html">Личный кабинет</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section">
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0; max-width:1000px; margin:0 auto; border-radius:20px; overflow:hidden; box-shadow: 0 15px 40px rgba(139, 94, 60, 0.15);">
+      
+      <div style="background: linear-gradient(135deg, #8b5e3c 0%, #6d4a30 100%); padding:50px 40px; color:white; position:relative; text-align:left;">
+        
+        
+        <div style="margin-bottom:30px;">
+          <h2 style="font-size:32px; margin:0 0 15px; font-weight:600;"></h2>
+          <p style="font-size:16px; margin:0; opacity:0.9; line-height:1.5;">
+            <br>
+          </p>
+        </div>
+
+        <div style="margin:40px 0;">
+          <div style="display:flex; align-items:center; margin-bottom:15px;">
+            <div style="width:8px; height:8px; ; border-radius:50%; margin-right:12px;"></div>
+            <span style="font-size:14px;"></span>
+          </div>
+          <div style="display:flex; align-items:center; margin-bottom:15px;">
+            <div style="width:8px; height:8px; ; border-radius:50%; margin-right:12px;"></div>
+            <span style="font-size:14px;"></span>
+          </div>
+          <div style="display:flex; align-items:center;">
+            <div style="width:8px; height:8px; ; border-radius:50%; margin-right:12px;"></div>
+            <span style="font-size:14px;"></span>
+          </div>
+        </div>
+
+        <div style="position:absolute; bottom:30px; left:40px; right:40px;">
+          <p style="font-size:12px; margin:0; opacity:0.7; text-align:center;">
+            
+          </p>
+        </div>
+      </div>
+
+      <div style="background:white; padding:50px 40px;">
+        <div style="text-align:center; margin-bottom:40px;">
+          <h3 style="font-size:28px; margin:0 0 10px; color:#1f1a16; font-weight:600;">Вход в аккаунт</h3>
+          <p style="color:#6b5f57; margin:0; font-size:14px;">Начните покупать с умом!</p>
+        </div>
+        
+        <form action="#" style="text-align:left;">
+          <div style="margin-bottom:25px;">
+            <label style="display:block; margin-bottom:8px; font-weight:500; color:#1f1a16; font-size:14px;">Email</label>
+            <input type="email" required placeholder="Введите ваш email" 
+                   style="width:100%; padding:14px 16px; border:2px solid #e8e2dc; border-radius:10px; font-size:15px; transition:all 0.3s ease; background:#fbf9f6;">
+          </div>
+          
+          <div style="margin-bottom:25px;">
+            <label style="display:block; margin-bottom:8px; font-weight:500; color:#1f1a16; font-size:14px;">Пароль</label>
+            <input type="password" required placeholder="Введите ваш пароль" 
+                   style="width:100%; padding:14px 16px; border:2px solid #e8e2dc; border-radius:10px; font-size:15px; transition:all 0.3s ease; background:#fbf9f6;">
+          </div>
+          
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+            <label style="display:flex; align-items:center; gap:8px; font-size:14px; color:#6b5f57;">
+              <input type="checkbox" style="width:16px; height:16px; accent-color:#8b5e3c;">
+              Запомнить меня
+            </label>
+            <a href="#" style="font-size:14px; color:#8b5e3c; text-decoration:none; font-weight:500;">Забыли пароль?</a>
+          </div>
+          
+          <button type="submit" 
+                  style="width:100%; background:#8b5e3c; color:white; border:none; padding:16px; border-radius:10px; font-size:16px; font-weight:600; cursor:pointer; transition:all 0.3s ease; margin-bottom:25px;">
+            Войти
+          </button>
+        </form>
+        
+        <div style="text-align:center;">
+          <p style="color:#6b5f57; font-size:14px; margin:0;">
+            Еще нет аккаунта? <a href="#" style="color:#8b5e3c; text-decoration:none; font-weight:500;">Зарегистрироваться</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    © 2025 — Магазин мебели. Все права защищены. 
+  </div>
+</footer>
+<script>
+(function() {
+  const authButton = document.getElementById('authButton');
+  if (authButton) {
+    authButton.style.minWidth = '140px';
+    authButton.style.minHeight = '40px';
+    authButton.style.display = 'inline-flex';
+    authButton.style.alignItems = 'center';
+    authButton.style.justifyContent = 'center';
+    
+    fetch('/api/user', { credentials: 'include' })
+      .then(response => response.ok ? response.json() : Promise.reject())
+      .then(data => {
+        authButton.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span style="margin-left: 5px;">${data.user.firstName || 'Кабинет'}</span>
+        `;
+        authButton.href = "account.html";
+        authButton.classList.add('account-icon');
+      })
+      .catch(() => {
+        authButton.innerHTML = "Войти";
+        authButton.href = "#";
+      });
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Главная — Магазин мебели</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="brand">Nepridumal</div>
+    <nav>
+      <a href="/">Главная</a>
+      <a href="/catalog.html">Каталог</a>
+      <a href="/about.html">О нас</a>
+    </nav>
+    <div class="top-actions">
+      <a href="/cart.html" class="cart-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+        <span class="cart-count">0</span>
+      </a>
+      <a href="#" id="authButton" class="auth-button">Войти</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <a class="banner" href="/catalog.html" aria-label="Banner">
+    <img src="https://magento.elkemoobel.ee/media/wysiwyg/home_inpiration/Hay_diivan_.png" alt="banner">
+  </a>
+
+  <section class="section categories">
+    <h2>Категории</h2>
+    <div class="grid cols-4">
+      <a class="card category-card" href="/catalog.html?category=1" data-category-id="1">
+        <img src="https://hoff.ru/upload/iblock/bf3/j6rb03mhflu8dcucs2mecsv4e38g3u32.jpg" alt="chairs">
+        <h3>Стулья</h3>
+      </a>
+      <a class="card category-card" href="/catalog.html?category=2" data-category-id="2">
+        <img src="https://hoff.ru/upload/iblock/6db/dqye6cj9eh4c6d2gqq5njlmf1epuki3k.jpg" alt="tables">
+        <h3>Столы</h3>
+      </a>
+      <a class="card category-card" href="/catalog.html?category=3" data-category-id="3">
+        <img src="https://hoff.ru/upload/iblock/0ed/0edb35ba3079e952f590fcbd3a738c2d.jpg" alt="sofas">
+        <h3>Диваны</h3>
+      </a>
+      <a class="card category-card" href="/catalog.html?category=4" data-category-id="4">
+        <img src="https://hoff.ru/upload/iblock/7ca/7ca3c9f3e89ce5b68468fcc016358a99.jpg" alt="beds">
+        <h3>Кровати</h3>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Популярные товары</h2>
+    <div class="grid cols-3">
+      <article class="card">
+        <img src="https://hoff.ru/upload/iblock/eec/l3c7432ujmlraq1b6yxm621u61b8k7j4.jpg" alt="Диван Nordic">
+        <h3>Диван "Nordic"</h3>
+        <p class="price">15 900 ₽</p>
+        <div style="display: flex; gap: 8px; margin-top: 12px;">
+          <button class="cta add-to-cart-btn" data-product-id="1">В корзину</button>
+          <a class="cta" href="/product.html?id=1" style="background: transparent; color: #8b5e3c; border: 2px solid #8b5e3c; text-decoration: none;">Подробнее</a>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://hoff.ru/upload/iblock/804/gx5k9e2rxrqox8b8dr6zvkpcpvjdvnq6.jpg" alt="Кресло Lounge">
+        <h3>Кресло "Lounge"</h3>
+        <p class="price">12 400 ₽</p>
+        <div style="display: flex; gap: 8px; margin-top: 12px;">
+          <button class="cta add-to-cart-btn" data-product-id="2">В корзину</button>
+          <a class="cta" href="/product.html?id=2" style="background: transparent; color: #8b5e3c; border: 2px solid #8b5e3c; text-decoration: none;">Подробнее</a>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://hoff.ru/upload/iblock/686/2cmbn3xblh9l4h38w8rj01162yckrumi.jpg" alt="Стол Scandi">
+        <h3>Стол "Scandi"</h3>
+        <p class="price">7 200 ₽</p>
+        <div style="display: flex; gap: 8px; margin-top: 12px;">
+          <button class="cta add-to-cart-btn" data-product-id="3">В корзину</button>
+          <a class="cta" href="/product.html?id=3" style="background: transparent; color: #8b5e3c; border: 2px solid #8b5e3c; text-decoration: none;">Подробнее</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<div id="loginModal" class="modal">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal">&times;</button>
+    
+    <div class="login-form-container">
+      <div class="login-header">
+        <h3>Вход в аккаунт</h3>
+        <p>Начните покупать с умом!</p>
+      </div>
+      
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" required placeholder="Введите ваш email">
+        </div>
+        
+        <div class="form-group">
+          <label>Пароль</label>
+          <input type="password" id="loginPassword" required placeholder="Введите ваш пароль">
+        </div>
+        
+        <div class="form-options">
+          <label class="checkbox-label">
+            <input type="checkbox" id="rememberMe">
+            Запомнить меня
+          </label>
+          <a href="#" class="forgot-password">Забыли пароль?</a>
+        </div>
+        
+        <button type="submit" class="submit-btn">Войти</button>
+      </form>
+      
+      <div class="register-link">
+        <p>Еще нет аккаунта? <a href="#" class="register-link-btn">Зарегистрироваться</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    © 2025 — Магазин мебели. Все права защищены. 
+  </div>
+</footer>
+
+<script src="js/auth.js"></script>
+<script src="js/cart-counter.js"></script>
+<script src="js/no-auth-animation.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const totalCount = localStorage.getItem('cartTotalCount') || '0'
+  document.querySelectorAll('.cart-count').forEach(counter => {
+    counter.textContent = totalCount
+  })
+  
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'cartTotalCount') {
+      document.querySelectorAll('.cart-count').forEach(counter => {
+        counter.textContent = e.newValue || '0'
+      })
+    }
+  })
+
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault()
+      const productId = e.target.dataset.productId
+      
+      try {
+        const response = await fetch('/api/cart', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            productId: parseInt(productId),
+            quantity: 1
+          })
+        })
+
+        if (response.ok) {
+          const cartResponse = await fetch('/api/cart')
+          const cartItems = await cartResponse.json()
+          const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
+          
+          localStorage.setItem('cartTotalCount', totalCount.toString())
+          
+          document.querySelectorAll('.cart-count').forEach(counter => {
+            counter.textContent = totalCount
+          })
+          
+          const notification = document.createElement('div')
+          notification.className = 'notification'
+          notification.textContent = 'Товар добавлен в корзину'
+          notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #27ae60;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            z-index: 10000;
+          `
+          document.body.appendChild(notification)
+          setTimeout(() => notification.remove(), 3000)
+        } else {
+          const notification = document.createElement('div')
+          notification.className = 'notification'
+          notification.textContent = 'Ошибка добавления в корзину'
+          notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            z-index: 10000;
+          `
+          document.body.appendChild(notification)
+          setTimeout(() => notification.remove(), 3000)
+        }
+      } catch (error) {
+        console.error('Ошибка добавления в корзину:', error)
+        const notification = document.createElement('div')
+        notification.className = 'notification'
+        notification.textContent = 'Ошибка добавления в корзину'
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #e74c3c;
+          color: white;
+          padding: 12px 20px;
+          border-radius: 5px;
+          z-index: 10000;
+        `
+        document.body.appendChild(notification)
+        setTimeout(() => notification.remove(), 3000)
+      }
+    })
+  })
+
+  document.querySelectorAll('.category-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      console.log('Переход к категории:', this.dataset.categoryId)
+    })
+  })
+})
+</script>
+<script>
+(function() {
+  const authButton = document.getElementById('authButton');
+  if (authButton) {
+    authButton.style.minWidth = '140px';
+    authButton.style.minHeight = '40px';
+    authButton.style.display = 'inline-flex';
+    authButton.style.alignItems = 'center';
+    authButton.style.justifyContent = 'center';
+    
+    fetch('/api/user', { credentials: 'include' })
+      .then(response => response.ok ? response.json() : Promise.reject())
+      .then(data => {
+        authButton.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span style="margin-left: 5px;">${data.user.firstName || 'Кабинет'}</span>
+        `;
+        authButton.href = "account.html";
+        authButton.classList.add('account-icon');
+      })
+      .catch(() => {
+        authButton.innerHTML = "Войти";
+        authButton.href = "#";
+      });
+  }
+})();
+</script>
+
+</body>
+</html>
