@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
+-- Дамп данных таблицы furniture_shop.cart: ~0 rows (приблизительно)
 
 -- Дамп структуры для таблица furniture_shop.categories
 CREATE TABLE IF NOT EXISTS `categories` (
